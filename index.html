@@ -1,57 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Suwas Agro</title>
+
+<style>
+body{
+font-family:Arial,sans-serif;
+margin:0;
+background:#f5f7fa;
+}
+
+.header{
+background:linear-gradient(135deg,#0f9d58,#1b5e20);
+color:white;
+text-align:center;
+padding:40px 20px;
+}
+
+.header h1{
+margin:0;
+font-size:40px;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+padding:20px;
+}
+
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.card{
+background:white;
+border-radius:20px;
+padding:15px;
+text-align:center;
+box-shadow:0 5px 15px rgba(0,0,0,0.15);
+}
+
+.card img{
+width:100%;
+height:180px;
+object-fit:cover;
+border-radius:15px;
+}
+
+.price{
+color:green;
+font-size:22px;
+font-weight:bold;
+}
+
+.qty{
+width:80px;
+padding:8px;
+margin-top:10px;
+}
+
+.form{
+background:white;
+padding:20px;
+border-radius:20px;
+margin-top:25px;
+box-shadow:0 5px 15px rgba(0,0,0,0.15);
+}
+
+input,textarea{
+width:100%;
+padding:12px;
+margin:8px 0;
+border:1px solid #ccc;
+border-radius:10px;
+}
+
+button{
+background:#25D366;
+color:white;
+border:none;
+padding:15px;
+width:100%;
+font-size:18px;
+border-radius:10px;
+cursor:pointer;
+}
+
+button:hover{
+opacity:0.9;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+<h1>SUWAS AGRO</h1>
+<p>Fresh Vegetables & Grocery Supplier</p>
+<p>Mangaldai, Assam</p>
+</div>
+
+<div class="container">
+
 <div class="products">
 
 <div class="card">
 <img src="1675133352607-sku-0058-0-500x500.jpg">
-<div class="card-content">
-<h3>Fresh Potato</h3>
-<p class="price">₹12 / Kg</p>
-<a href="https://wa.me/919678412223?text=Hello%20Suwas%20Agro,%20I%20want%20to%20order%20Potato" class="whatsapp">Order Now</a>
-</div>
+<h3>Potato</h3>
+<p class="price">₹12/Kg</p>
+<input class="qty" type="number" id="potato" value="0">
 </div>
 
 <div class="card">
 <img src="red-globe-onion.jpg">
-<div class="card-content">
-<h3>Red Onion</h3>
-<p class="price">₹40 / Kg</p>
-<a href="https://wa.me/919678412223?text=Hello%20Suwas%20Agro,%20I%20want%20to%20order%20Onion" class="whatsapp">Order Now</a>
-</div>
+<h3>Onion</h3>
+<p class="price">₹40/Kg</p>
+<input class="qty" type="number" id="onion" value="0">
 </div>
 
 <div class="card">
 <img src="Screenshot_20260622_143849.jpg">
-<div class="card-content">
 <h3>Masoor Dal</h3>
-<p class="price">₹90 / Kg</p>
-<a href="https://wa.me/919678412223?text=Hello%20Suwas%20Agro,%20I%20want%20to%20order%20Masoor%20Dal" class="whatsapp">Order Now</a>
-</div>
-</div>
-
-<div class="card">
-<img src="IMG_20260622_144141.jpg">
-<div class="card-content">
-<h3>Cauliflower</h3>
-<p class="price">₹20 / Piece</p>
-<a href="https://wa.me/919678412223?text=Hello%20Suwas%20Agro,%20I%20want%20to%20order%20Cauliflower" class="whatsapp">Order Now</a>
-</div>
+<p class="price">₹90/Kg</p>
+<input class="qty" type="number" id="dal" value="0">
 </div>
 
 <div class="card">
-<img src="IMG_20260622_144203.jpg">
-<div class="card-content">
+<h3>Tomato</h3>
+<p class="price">₹25/Kg</p>
+<input class="qty" type="number" id="tomato" value="0">
+</div>
+
+<div class="card">
 <h3>Cabbage</h3>
-<p class="price">₹20 / Piece</p>
-<a href="https://wa.me/919678412223?text=Hello%20Suwas%20Agro,%20I%20want%20to%20order%20Cabbage" class="whatsapp">Order Now</a>
-</div>
+<p class="price">₹20/Piece</p>
+<input class="qty" type="number" id="cabbage" value="0">
 </div>
 
 <div class="card">
-<img src="IMG_20260622_144233.jpg">
-<div class="card-content">
-<h3>Fresh Tomato</h3>
-<p class="price">₹25 / Kg</p>
-<a href="https://wa.me/919678412223?text=Hello%20Suwas%20Agro,%20I%20want%20to%20order%20Tomato" class="whatsapp">Order Now</a>
-</div>
+<h3>Cauliflower</h3>
+<p class="price">₹20/Piece</p>
+<input class="qty" type="number" id="cauliflower" value="0">
 </div>
 
 </div>
+
+<div class="form">
+
+<h2>Customer Details</h2>
+
+<input type="text" id="name" placeholder="Your Name">
+
+<input type="text" id="phone" placeholder="Mobile Number">
+
+<textarea id="address" placeholder="Delivery Address"></textarea>
+
+<button onclick="sendOrder()">
+🛒 Place Order on WhatsApp
+</button>
+
+</div>
+
+</div>
+
+<script>
+function sendOrder(){
+
+let msg="*NEW ORDER - SUWAS AGRO*%0A%0A";
+
+msg+="Name: "+document.getElementById("name").value+"%0A";
+msg+="Phone: "+document.getElementById("phone").value+"%0A";
+msg+="Address: "+document.getElementById("address").value+"%0A%0A";
+
+msg+="Potato: "+document.getElementById("potato").value+" Kg%0A";
+msg+="Onion: "+document.getElementById("onion").value+" Kg%0A";
+msg+="Masoor Dal: "+document.getElementById("dal").value+" Kg%0A";
+msg+="Tomato: "+document.getElementById("tomato").value+" Kg%0A";
+msg+="Cabbage: "+document.getElementById("cabbage").value+" Pc%0A";
+msg+="Cauliflower: "+document.getElementById("cauliflower").value+" Pc";
+
+window.open("https://wa.me/919678412223?text="+msg);
+}
+</script>
+
+</body>
+</html>
