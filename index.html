@@ -198,3 +198,96 @@ window.open("https://wa.me/919678412223?text="+msg);
 🎁 Free Gift on Orders Above ₹1000
 </p>
 </div>
+<div class="form">
+<h2>🛒 Order Summary</h2>
+
+<h3 id="totalAmount">Total Amount: ₹0</h3>
+
+<p style="color:green;font-weight:bold;">
+🎁 Free Gift on Orders Above ₹1000
+</p>
+
+<button onclick="payNow()">
+💳 Pay Online
+</button>
+</div>
+<script>
+
+function calculateTotal(){
+
+let potato = document.getElementById("potato").value * 12;
+let onion = document.getElementById("onion").value * 40;
+let dal = document.getElementById("dal").value * 90;
+let tomato = document.getElementById("tomato").value * 25;
+let cabbage = document.getElementById("cabbage").value * 20;
+let cauliflower = document.getElementById("cauliflower").value * 20;
+
+let total = potato + onion + dal + tomato + cabbage + cauliflower;
+
+document.getElementById("totalAmount").innerHTML =
+"Total Amount: ₹" + total;
+}
+
+function sendOrder(){
+
+calculateTotal();
+
+let potatoQty=document.getElementById("potato").value;
+let onionQty=document.getElementById("onion").value;
+let dalQty=document.getElementById("dal").value;
+let tomatoQty=document.getElementById("tomato").value;
+let cabbageQty=document.getElementById("cabbage").value;
+let cauliflowerQty=document.getElementById("cauliflower").value;
+
+let total=
+(potatoQty*12)+
+(onionQty*40)+
+(dalQty*90)+
+(tomatoQty*25)+
+(cabbageQty*20)+
+(cauliflowerQty*20);
+
+let msg="*NEW ORDER - SUWAS AGRO*%0A%0A";
+
+msg+="Name: "+document.getElementById("name").value+"%0A";
+msg+="Phone: "+document.getElementById("phone").value+"%0A";
+msg+="Address: "+document.getElementById("address").value+"%0A%0A";
+
+msg+="Potato: "+potatoQty+" Kg%0A";
+msg+="Onion: "+onionQty+" Kg%0A";
+msg+="Masoor Dal: "+dalQty+" Kg%0A";
+msg+="Tomato: "+tomatoQty+" Kg%0A";
+msg+="Cabbage: "+cabbageQty+" Pc%0A";
+msg+="Cauliflower: "+cauliflowerQty+" Pc%0A%0A";
+
+msg+="*TOTAL AMOUNT: ₹"+total+"*";
+
+window.open("https://wa.me/919678412223?text="+msg);
+}
+
+function payNow(){
+
+calculateTotal();
+
+let potatoQty=document.getElementById("potato").value;
+let onionQty=document.getElementById("onion").value;
+let dalQty=document.getElementById("dal").value;
+let tomatoQty=document.getElementById("tomato").value;
+let cabbageQty=document.getElementById("cabbage").value;
+let cauliflowerQty=document.getElementById("cauliflower").value;
+
+let total=
+(potatoQty*12)+
+(onionQty*40)+
+(dalQty*90)+
+(tomatoQty*25)+
+(cabbageQty*20)+
+(cauliflowerQty*20);
+
+window.location.href=
+"upi://pay?pa=jintusaharia50@okaxis&pn=SUWAS%20AGRO&am="+total+"&cu=INR";
+}
+
+calculateTotal();
+
+</script>
